@@ -1,0 +1,138 @@
+/* .iklan .carousel-item {
+    min-height: 40vh;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+}
+
+.iklan .carousel-item:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+.iklan .carousel-item .container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.iklan .carousel-item h2 {
+    font-size: 80px;
+    color: #fff;
+    margin: 0 0 10px;
+    opacity: 0;
+}
+
+.iklan .carousel-item p {
+    font-size: 24px;
+    margin: 0;
+    color: #eee;
+    opacity: 0;
+    text-transform: uppercase;
+}
+
+.iklan .carousel-item.active h2 {
+    animation: fadeInLeft 0.5s ease forwards;
+}
+
+.iklan .carousel-item.active p {
+    animation: fadeInRight 0.5s ease forwards;
+}
+
+ol.carousel-indicators {
+    list-style: none;
+}
+
+.iklan .carousel-controls {
+    position: absolute;
+    left: 50%;
+    bottom: 40px;
+    z-index: 10;
+    transform: translate(-50%);
+}
+
+.iklan .carousel-indicators {
+    position: relative;
+    margin: 0;
+}
+
+.iklan .carousel-indicators li {
+    width: 50px;
+    height: 50px;
+    margin: 0 5px;
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+    border: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.iklan .carousel-control-next img,
+.iklan .carousel-control-prev img {
+    width: 30px;
+}
+
+.iklan .carousel-control-next {
+    right: -90px;
+}
+
+.iklan .carousel-control-prev {
+    left: -90px;
+}
+
+.iklan .carousel-indicators li.active {
+    border-color: #fff;
+    transform: scale(1.2);
+}
+
+.iklan .carousel-control-next,
+.iklan .carousel-control-prev {
+    width: 60px;
+    height: 60px;
+    opacity: 1;
+    z-index: 3;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.iklan .carousel-control-next:hover,
+.iklan .carousel-control-prev:hover {
+    box-shadow: 0 0 10px #fff;
+}
+
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+*/
