@@ -17,6 +17,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\OrderItemController;
 use App\Http\Controllers\dataPenjualController;
 use App\Http\Controllers\iotController;
+use App\Models\Pekerjaan;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -50,7 +51,7 @@ Route::get('/katalog', function () {
 Route::get('/home', function () {
     return view('home', [
         'title' => 'Home',
-        'nama_barang' => Barang::all(),
+        'nama_barang' => Pekerjaan::all(),
         'iklans' => Iklan::all(),
         'berita'=>Berita::all()
     ]);

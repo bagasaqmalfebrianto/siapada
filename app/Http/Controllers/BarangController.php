@@ -7,6 +7,7 @@ use App\Models\Iklan;
 use App\Models\Order;
 use App\Models\Barang;
 use App\Models\OrderItem;
+use App\Models\Pekerjaan;
 use Illuminate\Http\Request;
 use function Termwind\render;
 use Illuminate\Support\Facades\Auth;
@@ -21,19 +22,26 @@ class BarangController extends Controller
     public $barang1;
 
     public function index(Request $request)
-    {
-        $barang = Barang::inRandomOrder()->paginate(8);
-        if ($request->ajax()) {
-            $view = view('child', ['nama_barang' => $barang])->render();
+{
+    // Mengambil data pekerjaan secara acak dan melakukan paginasi
+    $pekerjaans = Pekerjaan::inRandomOrder()->paginate(8);
+    
+    // Jika permintaan berasal dari Ajax, kembalikan view yang dirender dengan data pekerjaan
+    if ($request->ajax()) {
+        $view = view('child', ['pekerjaans' => $pekerjaans])->render();
 
-            return response()->json(['html' => $view]);
-        }
-        return view('belanja', [
-            'title' => 'belanja',
-            'nama_barang' => $barang,
-            'iklans' => Iklan::inRandomOrder()->get()
-        ]);
+        return response()->json(['html' => $view]);
     }
+
+    // Kembalikan view 'belanja' dengan data pekerjaan dan iklan secara acak
+    return view('belanja', [
+        'title' => 'Pekerjaan',
+        'pekerjaans' => $pekerjaans,
+        'nama_barang' => $pekerjaans,
+        'iklans' => Iklan::inRandomOrder()->get(),
+    ]);
+}
+
 
     public function show(Barang $barang)
     {

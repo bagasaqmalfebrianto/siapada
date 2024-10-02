@@ -61,17 +61,25 @@
         </div> --}}
     </div>
 
-    <ul class="flex justify-between mt-10">
-        <li>
-            <a href="#" class="font-bold text-lg text-[#324DAF]">LOWONGAN LAINNYA</a>
-        </li>
-        <li>
-            <a href="#" class="font-bold text-lg text-[#324DAF]">SELENGKAPNYA</a>
+    <div class="mx-auto w-3/4">
+        <img src="/images/iklan1.png" alt="iklan" class="w-full h-200">
+    </div>
 
-        </li>
-    </ul>
+    <div class="mx-auto w-[95%]">
+        <ul class="flex justify-between mt-10">
+            <li>
+                <a href="#" class="font-bold text-lg text-[#324DAF]">LOWONGAN LAINNYA</a>
+            </li>
+            <li>
+                <a href="#" class="font-bold text-lg text-[#324DAF]">SELENGKAPNYA</a>
+    
+            </li>
+        </ul>
+    
+        <hr class="border-t border-black mb-4">
 
-    <hr class="border-t border-black mb-4">
+       
+    </div>
 
 
     <div class="drop-shadow-[0_5px_2px_rgba(0,0,0,0.25)] mt-3 flex justify-center items-center gap-2">
@@ -84,9 +92,7 @@
 
     </div>
 
-    <div class="py-5">
-        <img src="/images/iklan1.png" alt="iklan" class="w-full h-200">
-    </div>
+    
 
     {{-- @include("konten.iklan") --}}
 

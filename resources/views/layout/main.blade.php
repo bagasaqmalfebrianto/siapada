@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/owl.theme.default.css">
     <link rel="stylesheet" href="css/style.css">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <title>Sembako Store | {{ $title }}</title>
+    <title>SiapAda | {{ $title }}</title>
 </head>
 
 <body class="min-h-screen flex flex-col">

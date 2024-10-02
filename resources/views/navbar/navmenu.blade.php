@@ -1,117 +1,108 @@
-<div class="bg-[#9ba7d7]">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Navbar with Search Bar</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+<body class="bg-gray-100 dark:bg-gray-900">
+  
+  <!-- Navbar -->
+  <nav class="bg-[#9ba7d7] border-gray-200 dark:bg-gray-900">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      
+      <!-- Application Logo / Name on the left -->
+      <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">SiapAda</span>
+      </a>
 
-    <div class="flex justify-center gap-5 p-2">
-        <div class="inline-block mx-2">
-            <div class="flex">
-                <img src="{{ asset('images/SiapAda.png') }}" alt="logo-siapada" class="w-150">
+      <!-- Nav Links in the center (Responsive) -->
+      <div class="flex-grow hidden md:flex justify-center" id="navbar-default">
+        <ul class="font-medium flex flex-col md:flex-row md:space-x-8 rtl:space-x-reverse items-center">
+          <li>
+            <a href="/home" class="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" aria-current="page">Home</a>
+          </li>
+          <li>
+            <a href="/cari_kerja" class="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Mencari Pekerjaan</a>
+          </li>
+          <li>
+            <a href="/tentang_kami" class="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Tentang Kami</a>
+          </li>
+          <li>
+            <a href="/berita" class="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Berita</a>
+          </li>
+        </ul>
+      </div>
 
-                {{-- <div class=" m-auto">
-                        <h1 class="font-bold text-25 text-green_button">Siap</h1>
-                        <h1 class="font-bold text-25 text-green_button">Ada</h1>
-                </div> --}}
+      <!-- Avatar and User Name on the right -->
+      <div class="hidden md:flex items-center space-x-3">
+        <div class="relative">
+          <img src="https://asset.kompas.com/crops/3QcbIRoKn11P2lvzr4Ec5C26CGE=/0x0:0x0/750x500/data/photo/buku/61e6a27535e52.jpg" alt="User Avatar" class="h-10 w-10 rounded-full">
+        </div>
+        <span class="text-white dark:text-white">{{ auth()->user()->name }}</span>
+      </div>
+
+      <!-- Burger Menu Button for mobile -->
+      <button id="burgerBtn" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+        </svg>
+      </button>
+      
+      <!-- Responsive Nav Links and Avatar (For Mobile View) -->
+      <div class="hidden w-full md:hidden" id="navbar-default-mobile">
+        <ul class="font-medium flex flex-col p-4 border border-gray-100 rounded-lg bg-[#9ba7d7] dark:bg-gray-800 dark:border-gray-700">
+          <li>
+            <a href="#" class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page">Home</a>
+          </li>
+          <li>
+            <a href="#" class="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About</a>
+          </li>
+          <li>
+            <a href="#" class="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Services</a>
+          </li>
+          <li>
+            <a href="#" class="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Pricing</a>
+          </li>
+          <li>
+            <a href="#" class="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
+          </li>
+          <li>
+            <div class="block flex items-center space-x-3">
+              <div class="relative">
+                <img src="https://asset.kompas.com/crops/3QcbIRoKn11P2lvzr4Ec5C26CGE=/0x0:0x0/750x500/data/photo/buku/61e6a27535e52.jpg" alt="User Avatar" class="h-10 w-10 rounded-full">
+              </div>
+              <span class="text-white dark:text-white">{{ auth()->user()->name }}</span>
             </div>
-        </div>
-
-        <!-- MENUUUUU -->
-        <div class="mx-2 mt-4">
-            <ul class=" inline-block" >
-                <li class="mb-4">
-                    <ul class="flex gap-10 justify-center">
-                        <li>
-                            <a href="/home" class="text-white-600 hover:text-white font-medium ">Menu</a>
-                        </li>
-                        <li>
-                            <a href="/cari_kerja" class="text-white-600 hover:text-white font-medium">Mencari Pekerjaan</a>
-                        </li>
-                        <li>
-                            <a href="/tentang_kami" class="text-white-600 hover:text-white font-medium">Tentang Kami</a>
-                        </li>
-                        {{-- <li>
-                            <a href="/katalog" class="text-white-600 hover:text-white font-medium">Katalog</a>
-                        </li> --}}
-                        <li>
-                            <a href="/berita" class="text-white-600 hover:text-white font-medium">Berita</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <form action="/cari_kerja">
-                         <ul class="flex gap-10 justify-center">
-                            @if(request('category'))
-                            <input type="hidden" name="category" value="{{ request('category') }}">
-                            @endif
-                            @if(request('user'))
-                            <input type="hidden" name="user" value="{{ request('user') }}">
-                            @endif
-                                <li>
-                                    <a href="#">CARI</a>
-                                </li>
-                                <li>
-                                    <input type="text" class="w-800" placeholder="     Search.." name="search" value="{{ request('search') }}">
-                                </li>
-                                <li>
-                                    <button class="" type="submit" >Search</button>
-                                </li>
-                        </ul>
-                    </form>
-                </li>
-
-            </ul>
-        </div>
-
-
-        <div class="my-auto">
-            <ul class="flex gap-4">
-                @auth
-                {{-- <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Hello, {{ auth()->user()->name }}
-                    </a> --}}
-
-                    <div class="dropdown">
-                        <label tabindex="0" class="btn m-1">{{ auth()->user()->name }}</label>
-                        <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                            {{-- @can('pencari_kerja') --}}
-                                <li>
-                                    <a class="dropdown-item" href="/dashboard_admin/beri_pekerjaan"><i class="bi bi-layout-text-sidebar-reverse"></i> My Dashboard</a>
-                                </li>
-                                {{-- @endcan --}}
-                                {{-- @can('pembeli')
-                                <li>
-                                    <a href="/pembeli/order">Pesanan Saya</a>
-                                </li>
-                                <li>
-                                    <a href="">Edit Profile</a>
-                                </li>
-                                @endcan --}}
-                             <li>
-                                <form action="/logout" method="post">
-                                    @csrf
-                                <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-right"></i> Logout</button>
-                            </form>
-                            </li>
-                        </ul>
-                      </div>
-                    {{-- <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="/dashboard"><i class="bi bi-layout-text-sidebar-reverse"></i> My Dashboard</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li>
-                        <form action="/logout" method="post">
-                            @csrf
-                            <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-right"></i> Logout</button>
-                        </form>
-                    </ul> --}}
-                  </li>
-                    @else
-                    <li class="/login">
-                        <a href="/login" class="hover:text-white font-medium"><i class="bi bi-arrow-right-square "></i>  LOGIN</a>
-                    </li>
-                    <li>
-                        <a href="/register" class="hover:text-white font-medium">DAFTAR</a>
-                    </li>
-                @endauth
-            </ul>
-        </div>
+          </li>
+        </ul>
+      </div>
     </div>
+  </nav>
 
-</div>
+  <!-- Search Bar -->
+  <div class="bg-gray-100 dark:bg-gray-800 p-4">
+    <div class="max-w-screen-xl mx-auto">
+      <form class="flex items-center justify-center">
+        <input type="text" class="w-full md:w-2/3 lg:w-1/2 px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-l-md focus:ring-2 focus:ring-blue-500 focus:outline-none dark:bg-gray-700 dark:text-white dark:border-gray-600" placeholder="Cari sesuatu...">
+        <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-r-md hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:outline-none">Search</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript for handling the burger menu toggle
+    const burgerBtn = document.getElementById('burgerBtn');
+    const navbarDefault = document.getElementById('navbar-default-mobile');
+
+    if (burgerBtn && navbarDefault) {
+      burgerBtn.addEventListener('click', () => {
+        navbarDefault.classList.toggle('hidden');
+      });
+    }
+  </script>
+
+</body>
+</html>
