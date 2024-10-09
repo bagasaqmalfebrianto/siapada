@@ -15,7 +15,8 @@ return new class extends Migration {
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('barang_id')->constrained()->onDelete('cascade');
             $table->integer('jumlah');
-            $table->timestamps();
+            $table->string('status');
+            $table->string('whatsapp_link')->nullable();
         });
     }
 

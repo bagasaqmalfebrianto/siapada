@@ -86,11 +86,12 @@ class DashboardController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Barang $barang)
+    public function edit(Barang $beri_pekerjaan)
     {
-        // dd($barang); 
+        // dd($beri_pekerjaan); 
+
         return view('dashboard_admin.beri_pekerjaan.edit',[
-            'barang'=>$barang,
+            'barang'=>$beri_pekerjaan,
             'categories'=>Category::all()
         ]);
     }
@@ -98,51 +99,56 @@ class DashboardController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Barang $barang)
+    public function update(Request $request, Barang $beri_pekerjaan)
     {
-        //
         $rules = [
-            'nama'=>'required|max:255',
-            'harga'=>'required',
-            'category_id'=>'required',
-            'image'=>'image|file|max:10024',
-            'body'=>'required',
-            'lokasi'=>'required'
+            'nama' => 'required|max:255',
+            'harga' => 'required',
+            'category_id' => 'required',
+            'image' => 'image|file|max:10024',
+            'body' => 'required',
+            'lokasi' => 'required'
         ];
-
-        if($request->slug != $barang->slug){
-            $rules['slug']='required|unique:barangs';
-        }
-
+    
+        // Validasi data
         $validatedData = $request->validate($rules);
-
-        if($request->file('image')){
-            // kalo gambar lama ada maka dihapus
-            if($request->oldImage){
-                Storage::delete($request->oldImage);
-            }
-            $validatedData['image']=$request->file('image')->store('post-images');
+    
+        // Jika nama berubah, maka slug akan dibuat ulang
+        if ($request->nama != $beri_pekerjaan->nama) {
+            $validatedData['slug'] = Str::slug($request->nama);
+        } else {
+            $validatedData['slug'] = $beri_pekerjaan->slug;
         }
-
-        $validatedData['user_id']=auth()->user()->id;
-        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 10);
-
-        Barang::where('id', $barang->id)
-                    ->update($validatedData);
-
-        return redirect('/dashboard_admin/beri_pekerjaan')->with('success','New post has been updated');
-
+    
+        // Jika ada gambar yang baru diupload
+        if ($request->file('image')) {
+            if ($request->oldImage) {
+                Storage::delete('public/' . $request->oldImage);
+            }
+            $validatedData['image'] = $request->file('image')->store('post-images', 'public');
+        }
+    
+        // Update user_id dan excerpt
+        $validatedData['user_id'] = auth()->id();
+        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 70);
+    
+        // Update barang di database
+        Barang::where('id', $beri_pekerjaan->id)->update($validatedData);
+    
+        return redirect('/dashboard_admin/beri_pekerjaan')->with('success', 'Pekerjaan berhasil diperbarui');
     }
+    
+
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Barang $barang)
+    public function destroy(Barang $beri_pekerjaan)
     {
         //
 
 
-        Barang::destroy($barang->id);
+        Barang::destroy($beri_pekerjaan->id);
 
         return redirect('/dashboard_admin/beri_pekerjaan')->with('success','New post has been deleted');
     }

@@ -12,7 +12,10 @@ export default defineConfig({
                 'resources/css/dashboard.css', // Tambahkan CSS dashboard
                 'resources/css/style.css',
                 'resources/css/sb-admin-2.min.css' ,
-                'resources/js/sb-admin-2.min.js',     // Tambahkan CSS tambahan
+                'resources/js/sb-admin-2.min.js',   
+                'resources/vendor/jquery/jquery.min.js', // jQuery
+                'resources/vendor/bootstrap/js/bootstrap.bundle.min.js', // Bootstrap
+                'resources/vendor/jquery-easing/jquery.easing.min.js' // jQuery Easing 
             ],
             output: 'public/build',
         }),

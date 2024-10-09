@@ -23,4 +23,7 @@ class Cart extends Model
     {
         return $this->belongsTo(Barang::class, 'barang_id');
     }
+
+    public $timestamps = false; // Nonaktifkan timestamps
+    
 }

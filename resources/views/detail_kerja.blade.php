@@ -25,7 +25,7 @@
                     @csrf
                     <div class="w-auto">
                         <h1 class="text-24 font-bold">{{ $barang->nama }}</h1>
-                        <h3 class="flex items-center gap-x-2"><i class="bi bi-geo-alt"> </i>Lokasi :</h3>
+                        <h3 class="flex items-center gap-x-2"><i class="bi bi-geo-alt"> </i>Lokasi : {{$barang->lokasi}}</h3>
                         <h3 class="flex items-center gap-x-2"><i class="bi bi-tags"></i>Kategori Pekerjaan : {{ $barang->category->nama }}</h3>
                         <h3 class="flex items-center gap-x-2"><i class="bi bi-arrow-left-right"></i>Lowongan Dibutuhkan : {{ $barang->stok }}</h3>
                         <h3 class="text-[#324DAF] font-bold">Pendpatan : Rp. {{ $barang->harga }}</h3>
@@ -47,8 +47,13 @@
                             </div>
 
                             <a href=""><i class="bi bi-cart-plus text-30"></i></a> --}}
+                             <!-- Input hidden untuk jumlah -->
+                             <input type="hidden" name="jumlah" value="1">
+                             <input type="hidden" name="status" value="Menunggu">
 
-                            <button type="submit" class="bg-[#324DAF] text-white px-10 py-2 rounded-md">Lamar Pekerjaan</button>
+
+                             <button type="button" class="bg-[#324DAF] text-white px-10 py-2 rounded-md" onclick="checkLogin()">Lamar Pekerjaan</button>
+
                         </div>
                     </div>
                 </form>
@@ -115,4 +120,20 @@
             });
         });
     });
+
+    function checkLogin() {
+        // Cek status login, misalkan dengan variabel isLoggedIn
+        // Anda bisa menggunakan variabel ini dari PHP jika diperlukan
+        const isLoggedIn = @json(auth()->check());
+
+        if (!isLoggedIn) {
+            // Notifikasi bahwa pengguna harus login
+            alert('Silakan login terlebih dahulu untuk melamar pekerjaan.');
+            // Redirect ke halaman login
+            window.location.href = "{{ url('/login') }}"; // Ganti dengan URL login yang sesuai
+        } else {
+            // Jika sudah login, submit form
+            document.querySelector('form').submit(); // Menyubmit form
+        }
+    }
 </script>

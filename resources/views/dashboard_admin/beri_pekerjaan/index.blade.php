@@ -48,8 +48,8 @@
                         <td>{{ $br->excerpt }}</td>
         
                         <td>
-                            <a href="/dashboard_admin/beri_pekerjaan/{{ $br->slug }}"><i class="bi bi-archive"></i></a>
-                            <a href="{{ route('beri_pekerjaan.edit', $br->slug) }}"><i class="bi bi-pencil-square"></i></a>
+                            {{-- <a href="/dashboard_admin/beri_pekerjaan/{{ $br->slug }}"><i class="bi bi-archive"></i></a> --}}
+                            <a href="/dashboard_admin/beri_pekerjaan/{{ $br->slug }}/edit"><i class="bi bi-pencil-square"></i></a>
                             <form action="/dashboard_admin/beri_pekerjaan/{{ $br->slug }}" class="d-inline" method="post">
                                 @method('delete')
                                 @csrf

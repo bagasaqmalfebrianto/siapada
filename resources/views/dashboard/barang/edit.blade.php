@@ -10,7 +10,7 @@
 
       <div class="col-lg-8">
 
-          <form method="post" action="/dashboard/barang/{{ $barang->slug }}">
+        <form method="post" action="/dashboard_admin/beri_pekerjaan/{{ $barang->slug }}">
             @method('put')
             @csrf
               <div class="mb-3">

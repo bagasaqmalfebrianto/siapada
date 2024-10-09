@@ -24,7 +24,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Interface
+                BERI PEKERJAAN
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -33,6 +33,27 @@
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Beri Pekerjaan</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/dashboard_admin/permintaan_lamaran" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Permintaan Lamaran</span>
+                </a>
+            </li>
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                CARI PEKERJAAN
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/dashboard_admin/lamaran_saya" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Lamaran Saya</span>
                 </a>
             </li>
 

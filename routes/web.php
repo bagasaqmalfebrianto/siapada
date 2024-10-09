@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\IklanController;
 use App\Http\Controllers\LoginController;
-
+use App\Http\Controllers\adminDashboardController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\dataController;
 use App\Http\Controllers\BeritaController;
@@ -17,7 +17,9 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\OrderItemController;
 use App\Http\Controllers\dataPenjualController;
 use App\Http\Controllers\iotController;
-use App\Models\Pekerjaan;
+use App\Http\Controllers\lamaranSayaController;
+use App\Http\Controllers\permintaanLamaranController;
+use App\Http\Controllers\dataLamaranController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -51,7 +53,7 @@ Route::get('/katalog', function () {
 Route::get('/home', function () {
     return view('home', [
         'title' => 'Home',
-        'nama_barang' => Pekerjaan::all(),
+        'nama_barang' => Barang::all(),
         'iklans' => Iklan::all(),
         'berita'=>Berita::all()
     ]);
@@ -94,14 +96,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
 
 
 
-//Dashboard
-Route::get('/dashboard_admin', function () {
-    return view('dashboard_admin.index',[
-        'carts'=>Cart::all()
-    ]);
-})->middleware('auth');
 
-Route::resource('/dashboard_admin/beri_pekerjaan', DashboardController::class)->middleware('auth');
 
 Route::resource('/dashboard/tambah_penjual', dataPenjualController::class)->middleware('auth');
 
@@ -130,11 +125,17 @@ Route::resource('/dashboard_admin/data', dataController::class);
 //     return view('dashboardadmin.layout.main');
 // });
 
-//IOT
-Route::get('SembakoStore',[iotController::class, 'index']);
-Route::get('SembakoStore/{$id}',[iotController::class, 'show']);
+
 
 //NEW
 //dasbhboard admin
 Route::resource('/dashboard_admin/data', dataController::class)->middleware('auth');;
 
+
+//PEMBERI KERJA
+Route::resource('/dashboard_admin/beri_pekerjaan', DashboardController::class)->middleware('auth');
+Route::resource('/dashboard_admin/lamaran_saya', lamaranSayaController::class)->middleware('auth');
+Route::resource('/dashboard_admin/permintaan_lamaran', permintaanLamaranController::class)->middleware('auth');
+//ADMIN
+Route::resource('dashboard_admin2/data_user', adminDashboardController::class);
+Route::resource('dashboard_admin2/data_lamaran', dataLamaranController::class);

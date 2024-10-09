@@ -24,7 +24,7 @@ class BarangController extends Controller
     public function index(Request $request)
 {
     // Mengambil data pekerjaan secara acak dan melakukan paginasi
-    $pekerjaans = Pekerjaan::inRandomOrder()->paginate(8);
+    $pekerjaans = Barang::inRandomOrder()->paginate(8);
     
     // Jika permintaan berasal dari Ajax, kembalikan view yang dirender dengan data pekerjaan
     if ($request->ajax()) {
@@ -61,6 +61,7 @@ class BarangController extends Controller
             'user_id' => auth()->user()->id,
             'barang_id' => $barang->id,
             'jumlah' => $request->jumlah,
+            'status' => $request->status,
         ]);
 
         // OrderItem::create([
@@ -77,7 +78,7 @@ class BarangController extends Controller
 
         $cart->barang()->decrement('stok', $request->jumlah);
 
-        return redirect('/cart')->with('success', 'Barang Berhasil Ditambahkan!');
+        return redirect('/dashboard_admin/lamaran_saya')->with('success', 'Barang Berhasil Ditambahkan!');
     }
 
 

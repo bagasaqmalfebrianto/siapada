@@ -51,7 +51,7 @@ class LoginController extends Controller
 
             // Redirect sesuai peran pengguna
             if (auth()->user()->is_admin) {
-                return redirect()->intended('/dashboard_admin');
+                return redirect()->intended('/dashboard_admin2/data_user');
             }
             return redirect()->intended('/home');
         }
